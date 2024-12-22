@@ -42,7 +42,7 @@
 
 1. **Клонируйте репозиторий**:
    ```bash
-   git clone https://github.com/lenarsharipov/test_assignment_pir.git
+   git clone https://github.com/lenarsharipov/pir_online.git
    cd test_assignment_pir
 
 2. **Соберите и запустите приложение с использованием Docker**.
