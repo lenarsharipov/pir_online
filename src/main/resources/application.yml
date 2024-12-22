@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: test_assignment_pir
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pir
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:liquibase/db.changelog.yml
+    enabled: true
+    default-schema: public
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+security:
+  jwt:
+    secret: Y3NkY3NkY3NkbGNtY3NkbGNzZGNkZ3Z4YXNmeGE1c3Rqd3hxdzd4aDdoeA==
+    access: 1 # hours
+    refresh: 1 # days
+
+springdoc:
+  override-with-generic-response: false

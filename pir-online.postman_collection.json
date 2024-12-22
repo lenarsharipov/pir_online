@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "8b8275db-23cb-49ed-80fb-c3c59e88bf39",
+		"name": "pir-online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27060076"
+	},
+	"item": [
+		{
+			"name": "get project by valid id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{localhost}}/projects/1"
+			},
+			"response": []
+		},
+		{
+			"name": "get project by invalid id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{localhost}}/projects/-1"
+			},
+			"response": []
+		},
+		{
+			"name": "list sections",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{localhost}}/sections"
+			},
+			"response": []
+		},
+		{
+			"name": "list statuses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{localhost}}/statuses"
+			},
+			"response": []
+		},
+		{
+			"name": "create project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"projectName\": \"Project Alpha\",\r\n  \"projectCode\": \"PA-001\",\r\n  \"startDate\": \"2024-12-22\",\r\n  \"endDate\": \"2024-12-31\",\r\n  \"sections\": [1, 2, 3]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localhost}}/projects"
+			},
+			"response": []
+		},
+		{
+			"name": "create then error",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"projectName\": \"\",\r\n  \"projectCode\": \"\",\r\n  \"startDate\": \"2025-12-21\",\r\n  \"endDate\": \"2024-12-31\",\r\n  \"sections\": [1, 2, 1, 0, 1000000000]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localhost}}/projects"
+			},
+			"response": []
+		},
+		{
+			"name": "delete by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{localhost}}/projects/1"
+			},
+			"response": []
+		},
+		{
+			"name": "update project status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"IN_PROGRESS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localhost}}/projects/1/status"
+			},
+			"response": []
+		},
+		{
+			"name": "update project card",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"projectName\": \"Project Alpha UPD\",\r\n  \"projectCode\": \"PA-001 UPD\",\r\n  \"startDate\": \"2030-12-22\",\r\n  \"endDate\": \"2035-12-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localhost}}/projects/1/card"
+			},
+			"response": []
+		},
+		{
+			"name": "add project section",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "{{localhost}}/projects/3/sections/6"
+			},
+			"response": []
+		},
+		{
+			"name": "delete project section",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{pir_token}}"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "{{localhost}}/projects/3/sections/3"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{localhost}}/auth/login"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pir_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
